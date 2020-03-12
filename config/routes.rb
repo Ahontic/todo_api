@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       post '/auth', to: 'users#create'
 
       resources :projects do
-        resources :tasks, only: %i[index show create] do
+        resources :tasks, except: %i[show] do
           member do
             put :status
             put :deadline
