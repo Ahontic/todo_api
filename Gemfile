@@ -20,9 +20,11 @@ gem 'rack-cors'
 gem 'turbolinks', '~> 5'
 
 group :development, :test do
+  gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'pry-rails'
   gem 'rubocop'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -34,9 +36,7 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 4.0.0.beta3'
-  gem 'shoulda-matchers'
   gem 'simplecov'
 end
 
