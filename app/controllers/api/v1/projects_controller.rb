@@ -18,8 +18,6 @@ class Api::V1::ProjectsController < ApplicationController
     @project = @current_user.projects.new(project_params)
     if @project.save
       render json: ProjectSerializer.new(@project).serialized_json, status: :created
-    elsif @current_user.projects.find_by(name: params[:name])
-      render json: { message: 'The project with such name does already exist.' }, status: :conflict
     else
       render json: @project.errors, status: :unprocessable_entity
     end
@@ -34,7 +32,11 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
+    if @project.destroy
+      redirect_to action: :index
+    else
+      render json: @project.errors, status: :unprocessable_entity
+    end
   end
 
   private

@@ -7,6 +7,7 @@ require File.expand_path('../config/environment', __dir__)
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'dox'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each(&method(:require))
 
@@ -28,6 +29,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.after(:each, :dox) do |example|
+    example.metadata[:request] = request
+    example.metadata[:response] = response
+  end
 end
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|

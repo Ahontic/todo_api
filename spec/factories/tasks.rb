@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :task do
     name { FFaker::Book.title }
-    deadline { rand(2020..2050) }
+    deadline { FFaker::Time.date }
     project
   end
 end

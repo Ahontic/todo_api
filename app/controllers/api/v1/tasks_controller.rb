@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 class Api::V1::TasksController < ApplicationController
-  before_action :project_id_find
-  before_action :task_find, only: %i[update destroy status deadline]
+  before_action :authorize_request
+  before_action :task_find, only: %i[update destroy status]
 
   def index
-    render json: @project.tasks
+    render json: TaskSerializer.new(@current_user.tasks).serialized_json, status: :ok
   end
 
   def create
-    task = @project.tasks.create(task_params)
+    task = @current_user.tasks.create(task_params)
     if task.save
-      render json: task, status: :created
+      render json: TaskSerializer.new(task).serialized_json, status: :created
     else
       render json: task.errors, status: :unprocessable_entity
     end
@@ -19,7 +19,7 @@ class Api::V1::TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      render json: @task, status: :ok
+      render json: TaskSerializer.new(@task).serialized_json, status: :ok
     else
       render json: @task.errors, status: :unprocessable_entity
     end
@@ -33,27 +33,13 @@ class Api::V1::TasksController < ApplicationController
     @task.toggle!(:status)
   end
 
-  def deadline
-    @task.update(task_params)
-    deadline = @task.deadline
-    if @task.update(deadline: deadline)
-      render json: @task, status: :ok
-    else
-      render json: @task.errors, status: :unprocessable_entity
-    end
-  end
-
   private
 
   def task_params
-    params.permit(:name, :deadline)
+    params.permit(:name, :status, :deadline)
   end
 
   def task_find
-    @task = @project.tasks.find(params[:id])
-  end
-
-  def project_id_find
-    @project = Project.find(params[:project_id])
+    @task = @current_user.tasks.find(params[:id])
   end
 end

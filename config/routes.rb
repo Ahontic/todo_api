@@ -6,13 +6,8 @@ Rails.application.routes.draw do
       post '/auth/sign_in', to: 'authentication#login'
       post '/auth', to: 'users#create'
 
-      resources :projects do
-        resources :tasks, except: %i[show] do
-          member do
-            put :status
-            put :deadline
-          end
-        end
+      resources :projects, shallow: true do
+        resources :tasks, except: %i[show]
       end
     end
   end

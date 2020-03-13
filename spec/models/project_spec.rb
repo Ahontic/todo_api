@@ -2,7 +2,7 @@
 
 RSpec.describe Project do
   describe 'associations' do
-    it { is_expected.to have_many(:tasks) }
+    it { is_expected.to have_many(:tasks).dependent(:destroy) }
     it { is_expected.to belong_to(:user) }
   end
 
