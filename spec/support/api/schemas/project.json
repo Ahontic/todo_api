@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "name": {
+          "type": "string"
+        }
+      },
+  "relationships": {
+         "user": {
+           "data": {
+             "id": "integer",
+             "type": "user"
+           }
+         }
+  }
+}
