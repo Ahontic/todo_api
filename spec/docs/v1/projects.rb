@@ -5,7 +5,7 @@ module Docs
     module Projects
       extend Dox::DSL::Syntax
 
-      document :api do # generates module Docs::Projects::Api
+      document :api do
         resource 'Projects' do
           endpoint '/projects'
           group 'Projects'
