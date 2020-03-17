@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 RSpec.describe Project, type: :request do
-  let!(:user) { create(:user) }
+  include Docs::V1::Projects::Api
+
+  let(:user) { create(:user) }
   let(:token) { JsonWebToken.encode(user_id: user.id) }
   let!(:project) { create(:project, user_id: user.id) }
   let(:project_params) { FactoryBot.attributes_for(:project) }
 
-  context 'GET #index' do
+  context 'GET #index', :dox do
+    include Docs::V1::Projects::Index
+
     before do
       get api_v1_projects_path, params: {}, headers: { Authorization: token }
     end
@@ -20,7 +24,9 @@ RSpec.describe Project, type: :request do
     end
   end
 
-  describe 'POST /projects' do
+  describe 'POST #create', :dox do
+    include Docs::V1::Projects::Create
+
     it 'creates new project' do
       post api_v1_projects_path, params: project_params, headers: { Authorization: token }
       expect(response).to have_http_status(201)
@@ -28,7 +34,9 @@ RSpec.describe Project, type: :request do
     end
   end
 
-  context 'GET #show' do
+  context 'GET #show', :dox do
+    include Docs::V1::Projects::Show
+
     before do
       get api_v1_project_path(project), headers: { Authorization: token }
     end
@@ -38,7 +46,9 @@ RSpec.describe Project, type: :request do
     end
   end
 
-  context 'PUT #update' do
+  context 'PUT #update', :dox do
+    include Docs::V1::Projects::Update
+
     before do
       put api_v1_project_path(project), params: project_params, headers: { Authorization: token }
     end
@@ -52,7 +62,9 @@ RSpec.describe Project, type: :request do
     end
   end
 
-  context 'DELETE #destroy' do
+  context 'DELETE #destroy', :dox do
+    include Docs::V1::Projects::Delete
+
     it 'removes project' do
       expect { delete api_v1_project_path(project), headers: { Authorization: token } }.to change(Project, :count)
         .by(-1)

@@ -5,9 +5,9 @@ class Api::V1::ProjectsController < ApplicationController
   before_action :project_find, only: %i[show update destroy]
 
   def index
-    @projects = @current_user.projects.order(created_at: :desc)
+    projects = @current_user.projects.order(created_at: :desc)
 
-    render json: ProjectSerializer.new(@projects).serialized_json, status: :ok
+    render json: ProjectSerializer.new(projects).serialized_json, status: :ok
   end
 
   def show
@@ -15,11 +15,11 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def create
-    @project = @current_user.projects.new(project_params)
-    if @project.save
-      render json: ProjectSerializer.new(@project).serialized_json, status: :created
+    project = @current_user.projects.new(project_params)
+    if project.save
+      render json: ProjectSerializer.new(project).serialized_json, status: :created
     else
-      render json: @project.errors, status: :unprocessable_entity
+      render json: project.errors, status: :unprocessable_entity
     end
   end
 

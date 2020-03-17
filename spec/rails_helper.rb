@@ -12,6 +12,7 @@ require 'json_matchers/rspec'
 JsonMatchers.schema_root = 'spec/support/api/schemas'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each(&method(:require))
+Dir[Rails.root.join('spec/docs/**/*.rb')].each(&method(:require))
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -36,9 +37,16 @@ RSpec.configure do |config|
     example.metadata[:response] = response
   end
 end
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+Dox.configure do |config|
+  config.header_file_path = Rails.root.join('spec/docs/v1/descriptions/header.md')
+  config.desc_folder_path = Rails.root.join('spec/docs/v1/descriptions')
+  config.headers_whitelist = %w[Accept X-Auth-Token]
 end

@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Project < ApplicationRecord
-  validates :name, presence: true, uniqueness: true, length: { minimum: 1, maximum: 60 }
+  NAME_LENGTH = (1..60).freeze
+
+  validates :name, presence: true, uniqueness: true, length: { in: NAME_LENGTH }
 
   has_many :tasks, dependent: :destroy
   belongs_to :user

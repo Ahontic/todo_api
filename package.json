@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "aglio": "^2.3.0",
+    "globally": "^0.0.0"
+  }
+}

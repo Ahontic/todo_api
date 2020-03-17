@@ -2,8 +2,8 @@
 
 class Api::V1::TasksController < ApplicationController
   before_action :authorize_request
-  before_action :task_find, only: %i[update destroy status]
-  before_action :project_find, only: %i[create]
+  before_action :task_find, only: %i[update destroy status show]
+  before_action :project_find, only: %i[index create]
 
   def index
     render json: TaskSerializer.new(@current_user.tasks).serialized_json, status: :ok
@@ -20,18 +20,30 @@ class Api::V1::TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      render json: TaskSerializer.new(@task).serialized_json, status: :ok
+      task_renderer
     else
       render json: @task.errors, status: :unprocessable_entity
     end
   end
 
+  def show
+    task_renderer
+  end
+
   def destroy
-    @task.destroy
+    if @task.destroy
+      render json: @current_user.tasks
+    else
+      render json: @task.errors, status: :unprocessable_entity
+    end
   end
 
   def status
-    @task.toggle!(:status)
+    if @task.toggle!(:status)
+      task_renderer
+    else
+      render json: task.errors, status: :unprocessable_entity
+    end
   end
 
   private
@@ -46,5 +58,9 @@ class Api::V1::TasksController < ApplicationController
 
   def project_find
     @project = @current_user.projects.find(params[:project_id])
+  end
+
+  def task_renderer
+    render json: TaskSerializer.new(@task).serialized_json, status: :ok
   end
 end
