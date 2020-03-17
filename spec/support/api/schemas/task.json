@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "name": {
+          "type": "string"
+    },
+    "deadline" : {
+      "type": "string"
+    }
+  }
+}
