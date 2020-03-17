@@ -19,7 +19,7 @@ Sign in
 
     + Body
 
-            email=benito.mann%40suremail.info&password=21XQFn_qUuPEJq
+            email=lasonya%40spamherelots.com&password=YKLmgwhlrVKLR5AS
 
 + Response 200
 
@@ -30,8 +30,8 @@ Sign in
     + Body
 
             {
-              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1OTMwOTI3NDB9.3sWaF27Aikin1pS5Maoo1GW4pRSQMhzL7jD_WE1WqJM",
-              "exp": "03-18-2020 15:45",
+              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1OTMwOTc3MDV9.ncHwAmyHEOo5hOfuRZjUVwWgSiFvCFIM2_uKAKxA_FI",
+              "exp": "03-18-2020 17:08",
               "username": null
             }
 
@@ -61,26 +61,7 @@ A list of Projects
 
             {
               "data": [
-                {
-                  "id": "1",
-                  "type": "project",
-                  "attributes": {
-                    "name": "Bloody Cat"
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "2",
-                        "type": "user"
-                      }
-                    },
-                    "tasks": {
-                      "data": [
             
-                      ]
-                    }
-                  }
-                }
               ]
             }
 
@@ -101,26 +82,7 @@ A list of Projects
 
             {
               "data": [
-                {
-                  "id": "2",
-                  "type": "project",
-                  "attributes": {
-                    "name": "Return of the Action Women"
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "3",
-                        "type": "user"
-                      }
-                    },
-                    "tasks": {
-                      "data": [
             
-                      ]
-                    }
-                  }
-                }
               ]
             }
 
@@ -137,7 +99,7 @@ Creates project
 
     + Body
 
-            name=Curse+of+the+Champagne+Women
+            name=Ultra+Cousins
 
 + Response 201
 
@@ -149,10 +111,10 @@ Creates project
 
             {
               "data": {
-                "id": "4",
+                "id": "1",
                 "type": "project",
                 "attributes": {
-                  "name": "Curse of the Champagne Women"
+                  "name": "Ultra Cousins"
                 },
                 "relationships": {
                   "user": {
@@ -173,10 +135,10 @@ Creates project
 ### Show project [GET /api/v1/projects/{id}]
 
 + Parameters
-    + id: `5` (number, required)
+    + id: `2` (number, required)
 
 + Request returns status code 200
-**GET**&nbsp;&nbsp;`/api/v1/projects/5`
+**GET**&nbsp;&nbsp;`/api/v1/projects/2`
 
     + Headers
 
@@ -192,10 +154,10 @@ Creates project
 
             {
               "data": {
-                "id": "5",
+                "id": "2",
                 "type": "project",
                 "attributes": {
-                  "name": "Legend of Red Cousins"
+                  "name": "Season of the Tokyo Blow"
                 },
                 "relationships": {
                   "user": {
@@ -216,10 +178,10 @@ Creates project
 ### Update project [PUT /api/v1/projects/{id}]
 
 + Parameters
-    + id: `6` (number, required)
+    + id: `3` (number, required)
 
 + Request returns status code 200
-**PUT**&nbsp;&nbsp;`/api/v1/projects/6`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/3`
 
     + Headers
 
@@ -228,7 +190,7 @@ Creates project
 
     + Body
 
-            name=Dangerous+Ninja
+            name=Legend+of+Dangerous+Men
 
 + Response 200
 
@@ -240,10 +202,10 @@ Creates project
 
             {
               "data": {
-                "id": "6",
+                "id": "3",
                 "type": "project",
                 "attributes": {
-                  "name": "Dangerous Ninja"
+                  "name": "Legend of Dangerous Men"
                 },
                 "relationships": {
                   "user": {
@@ -262,7 +224,7 @@ Creates project
             }
 
 + Request changes title
-**PUT**&nbsp;&nbsp;`/api/v1/projects/7`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/4`
 
     + Headers
 
@@ -271,7 +233,7 @@ Creates project
 
     + Body
 
-            name=Killer+Tears
+            name=Day+of+the+Blonde+Pickpocket
 
 + Response 200
 
@@ -283,10 +245,10 @@ Creates project
 
             {
               "data": {
-                "id": "7",
+                "id": "4",
                 "type": "project",
                 "attributes": {
-                  "name": "Killer Tears"
+                  "name": "Day of the Blonde Pickpocket"
                 },
                 "relationships": {
                   "user": {
@@ -307,10 +269,10 @@ Creates project
 ### Delete project [DELETE /api/v1/projects/{id}]
 
 + Parameters
-    + id: `8` (number, required)
+    + id: `5` (number, required)
 
 + Request removes project
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/8`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/5`
 
     + Headers
 
@@ -336,10 +298,10 @@ Creates project
 ### Get tasks [GET /api/v1/projects/{project_id}/tasks]
 A list of Tasks
 + Parameters
-    + project_id: `9` (number, required)
+    + project_id: `6` (number, required)
 
 + Request returns tasks
-**GET**&nbsp;&nbsp;`/api/v1/projects/9/tasks`
+**GET**&nbsp;&nbsp;`/api/v1/projects/6/tasks`
 
     + Headers
 
@@ -359,14 +321,14 @@ A list of Tasks
                   "id": "1",
                   "type": "task",
                   "attributes": {
-                    "name": "A Fistful of Red Tentacle",
+                    "name": "War of the Hungry Rain",
                     "status": false,
-                    "deadline": "2020-03-11"
+                    "deadline": "2020-07-12"
                   },
                   "relationships": {
                     "project": {
                       "data": {
-                        "id": "9",
+                        "id": "6",
                         "type": "project"
                       }
                     }
@@ -400,14 +362,14 @@ Show task
                 "id": "2",
                 "type": "task",
                 "attributes": {
-                  "name": "A Fistful of Champagne Witch",
+                  "name": "Killer Journals",
                   "status": false,
-                  "deadline": "2020-12-28"
+                  "deadline": "2020-05-13"
                 },
                 "relationships": {
                   "project": {
                     "data": {
-                      "id": "10",
+                      "id": "7",
                       "type": "project"
                     }
                   }
@@ -418,10 +380,10 @@ Show task
 ### Create task [POST /api/v1/projects/{project_id}/tasks]
 Create task
 + Parameters
-    + project_id: `11` (number, required)
+    + project_id: `8` (number, required)
 
 + Request returns status code 201
-**POST**&nbsp;&nbsp;`/api/v1/projects/11/tasks`
+**POST**&nbsp;&nbsp;`/api/v1/projects/8/tasks`
 
     + Headers
 
@@ -430,7 +392,7 @@ Create task
 
     + Body
 
-            name=Ultra+Fly&deadline=2020-06-14
+            name=Curse+of+the+Champagne+Wolf&deadline=2019-02-10
 
 + Response 201
 
@@ -445,14 +407,14 @@ Create task
                 "id": "4",
                 "type": "task",
                 "attributes": {
-                  "name": "Ultra Fly",
+                  "name": "Curse of the Champagne Wolf",
                   "status": false,
-                  "deadline": "2020-06-14"
+                  "deadline": "2019-02-10"
                 },
                 "relationships": {
                   "project": {
                     "data": {
-                      "id": "11",
+                      "id": "8",
                       "type": "project"
                     }
                   }
@@ -475,7 +437,7 @@ Update task
 
     + Body
 
-            name=Dangerous+City&deadline=2017-05-23
+            name=Curse+of+the+Danger+Demon&deadline=2016-06-15
 
 + Response 200
 
@@ -490,14 +452,14 @@ Update task
                 "id": "5",
                 "type": "task",
                 "attributes": {
-                  "name": "Dangerous City",
+                  "name": "Curse of the Danger Demon",
                   "status": false,
-                  "deadline": "2017-05-23"
+                  "deadline": "2016-06-15"
                 },
                 "relationships": {
                   "project": {
                     "data": {
-                      "id": "12",
+                      "id": "9",
                       "type": "project"
                     }
                   }
@@ -515,7 +477,7 @@ Update task
 
     + Body
 
-            name=A+Fistful+of+Ultra+City&deadline=2018-01-01
+            name=Planet+of+the+Electric+Identity&deadline=2018-06-17
 
 + Response 200
 
@@ -530,14 +492,14 @@ Update task
                 "id": "6",
                 "type": "task",
                 "attributes": {
-                  "name": "A Fistful of Ultra City",
+                  "name": "Planet of the Electric Identity",
                   "status": false,
-                  "deadline": "2018-01-01"
+                  "deadline": "2018-06-17"
                 },
                 "relationships": {
                   "project": {
                     "data": {
-                      "id": "13",
+                      "id": "10",
                       "type": "project"
                     }
                   }
@@ -560,7 +522,7 @@ Update status
 
     + Body
 
-            name=Season+of+the+Blue+Wizard&deadline=2018-02-13&status=true
+            name=War+of+the+Blonde+Journals&deadline=2018-07-03&status=true
 
 + Response 200
 
@@ -575,14 +537,14 @@ Update status
                 "id": "7",
                 "type": "task",
                 "attributes": {
-                  "name": "Season of the Blue Wizard",
+                  "name": "War of the Blonde Journals",
                   "status": true,
-                  "deadline": "2018-02-13"
+                  "deadline": "2018-07-03"
                 },
                 "relationships": {
                   "project": {
                     "data": {
-                      "id": "14",
+                      "id": "11",
                       "type": "project"
                     }
                   }
@@ -600,7 +562,7 @@ Update status
 
     + Body
 
-            name=Nuclear+Demon&deadline=2020-08-09&status=true
+            name=Death+Wolf&deadline=2017-11-12&status=true
 
 + Response 200
 
@@ -615,14 +577,14 @@ Update status
                 "id": "8",
                 "type": "task",
                 "attributes": {
-                  "name": "Nuclear Demon",
+                  "name": "Death Wolf",
                   "status": true,
-                  "deadline": "2020-08-09"
+                  "deadline": "2017-11-12"
                 },
                 "relationships": {
                   "project": {
                     "data": {
-                      "id": "15",
+                      "id": "12",
                       "type": "project"
                     }
                   }
@@ -651,9 +613,11 @@ Delete task
 
     + Body
 
-            [
+            {
+              "data": [
             
-            ]
+              ]
+            }
 
 # Group Users
 
@@ -674,7 +638,7 @@ Create user
 
     + Body
 
-            email=dick%40spamherelots.com&password=pZApC6oHbF
+            email=eduardo%40spamherelots.com&password=abddsVAFSk9Y2B7c
 
 + Response 201
 
@@ -688,12 +652,12 @@ Create user
               "id": 17,
               "name": null,
               "username": null,
-              "password_digest": "$2a$04$QFL01IONOVpQNaR3n/0lWOJz2ajYxyFHhLBknbauu1qk097JCilmq",
-              "email": "dick@spamherelots.com",
+              "password_digest": "$2a$04$hCKf5OQezJyQsjj4uf2Poe/ww1gYNVoU1QdtvV3azGLS92d0WF99.",
+              "email": "eduardo@spamherelots.com",
               "encrypted_password": "",
               "reset_password_token": null,
               "reset_password_sent_at": null,
               "remember_created_at": null,
-              "created_at": "2020-03-17T13:45:40.829Z",
-              "updated_at": "2020-03-17T13:45:40.829Z"
+              "created_at": "2020-03-17T15:08:25.428Z",
+              "updated_at": "2020-03-17T15:08:25.428Z"
             }

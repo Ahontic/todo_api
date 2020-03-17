@@ -2,13 +2,18 @@
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+
 ENV['RAILS_ENV'] ||= 'test'
+
 require File.expand_path('../config/environment', __dir__)
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
-require 'rspec/rails'
+
 require 'dox'
 require 'json_matchers/rspec'
+require 'rspec/rails'
+require 'test_prof/recipes/rspec/let_it_be'
+
 JsonMatchers.schema_root = 'spec/support/api/schemas'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each(&method(:require))
@@ -20,6 +25,7 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -36,17 +42,4 @@ RSpec.configure do |config|
     example.metadata[:request] = request
     example.metadata[:response] = response
   end
-end
-
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
-  end
-end
-
-Dox.configure do |config|
-  config.header_file_path = Rails.root.join('spec/docs/v1/descriptions/header.md')
-  config.desc_folder_path = Rails.root.join('spec/docs/v1/descriptions')
-  config.headers_whitelist = %w[Accept X-Auth-Token]
 end

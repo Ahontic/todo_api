@@ -3,10 +3,10 @@
 RSpec.describe Task, type: :request do
   include Docs::V1::Tasks::Api
 
-  let(:user) { create(:user) }
+  let_it_be(:user) { create(:user) }
   let(:token) { JsonWebToken.encode(user_id: user.id) }
-  let(:project) { create(:project, user: user) }
-  let!(:task) { create(:task, project: project) }
+  let_it_be(:project) { create(:project, user: user) }
+  let_it_be(:task) { create(:task, project: project) }
   let(:task_params) { FactoryBot.attributes_for(:task) }
 
   describe 'GET #index', :dox do

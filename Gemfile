@@ -40,6 +40,7 @@ group :test do
   gem 'rubocop'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'test-prof'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

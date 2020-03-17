@@ -3,9 +3,9 @@
 RSpec.describe Project, type: :request do
   include Docs::V1::Projects::Api
 
-  let(:user) { create(:user) }
+  let_it_be(:user) { create(:user) }
   let(:token) { JsonWebToken.encode(user_id: user.id) }
-  let!(:project) { create(:project, user_id: user.id) }
+  let_it_be(:project) { create(:project, user_id: user.id) }
   let(:project_params) { FactoryBot.attributes_for(:project) }
 
   context 'GET #index', :dox do

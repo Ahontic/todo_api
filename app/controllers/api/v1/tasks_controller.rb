@@ -32,7 +32,7 @@ class Api::V1::TasksController < ApplicationController
 
   def destroy
     if @task.destroy
-      render json: @current_user.tasks
+      render json: TaskSerializer.new(@current_user.tasks).serialized_json, status: :ok
     else
       render json: @task.errors, status: :unprocessable_entity
     end
