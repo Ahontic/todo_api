@@ -15,7 +15,7 @@ gem 'fast_jsonapi'
 gem 'jwt'
 gem 'lefthook'
 gem 'pg'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'rack-cors'
 gem 'turbolinks', '~> 5'
 
